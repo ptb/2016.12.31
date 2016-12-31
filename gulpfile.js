@@ -326,7 +326,7 @@ gulp.task("default", function serve (done) {
       var es6, filter
 
       if (["add", "change"].includes(evt)) {
-        filter = plug.filter(["*"], { "restore": true })
+        filter = plug.filter("*", { "restore": true })
         es6 = tidy.code(file, SRC)
           .pipe(filter)
           .pipe(tidy.es6()())
