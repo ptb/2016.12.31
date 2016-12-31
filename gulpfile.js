@@ -112,7 +112,7 @@ const opts = new function () {
       "tag": /\.tag/
     },
     "filter": {
-      "a": ["*", "!**/*.min.js"],
+      "a": ["*", "!**/*.min.*"],
       "b": {
         "restore": true
       }
@@ -326,7 +326,7 @@ gulp.task("default", function serve (done) {
       var es6, filter
 
       if (["add", "change"].includes(evt)) {
-        filter = plug.filter("**", { "restore": true })
+        filter = plug.filter(opts.filter.a, opts.filter.b)
         es6 = tidy.code(file, SRC)
           .pipe(filter)
           .pipe(tidy.es6()())
