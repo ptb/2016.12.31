@@ -337,7 +337,7 @@ gulp.task("default", function serve (done) {
         es6.pipe(plug.babel(opts.babel(true)))
           .pipe(task.js(true, false, false)())
           .pipe(gulp.dest(OUT))
-        gulp.src([file, "**/*.min.*"], {
+        gulp.src([file, "**/*.(min.|tag)*"], {
           "base": SRC
         })
           .pipe(gulp.dest(TMP))
