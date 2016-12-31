@@ -328,10 +328,8 @@ gulp.task("default", function serve (done) {
       if (["add", "change"].includes(evt)) {
         filter = plug.filter(opts.filter.a, opts.filter.b)
         es6 = tidy.code(file, SRC)
-          .pipe(filter)
           .pipe(tidy.es6()())
           .pipe(gulp.dest(SRC))
-          .pipe(filter.restore)
           .pipe(plug.ignore.exclude(opts.ext.tag))
         es6.pipe(plug.clone())
           .pipe(plug.babel(opts.babel(false)))
