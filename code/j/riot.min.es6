@@ -1,6 +1,7 @@
 /* Riot v3.0.5, @license MIT */ !(function (t, e) {
   typeof exports == "object" && typeof module != "undefined" ? e(exports) :
-    typeof define == "function" && define.amd ? define(["exports"], e) : e(t.riot =
+    typeof define == "function" && define.amd ? define(["exports"], e) : e(
+      t.riot =
       t.riot || {})
 }(this, function (t) {
   function e (t) {
@@ -64,12 +65,15 @@
   }
 
   function g (t, e) {
-    return e ? document.createElementNS("http://www.w3.org/2000/svg", "svg") :
+    return e ? document.createElementNS("http://www.w3.org/2000/svg",
+        "svg") :
       document.createElement(t)
   }
 
   function m (t) {
-    if (t.outerHTML) { return t.outerHTML }
+    if (t.outerHTML) {
+      return t.outerHTML
+    }
     var e = g("div")
 
     return e.appendChild(t.cloneNode(!0)), e.innerHTML
@@ -82,7 +86,9 @@
         r = t.ownerDocument.importNode(n.documentElement, !0)
 
       t.appendChild(r)
-    } else { t.innerHTML = e }
+    } else {
+      t.innerHTML = e
+    }
   }
 
   function y (t, e) {
@@ -107,7 +113,7 @@
     if (t) {
       for (var n; n = It.exec(t);) {
         e(n[1].toLowerCase(), n[2] || n[3] || n[
-        4])
+          4])
       }
     }
   }
@@ -116,15 +122,19 @@
     if (t) {
       var r, i = e(t, n)
 
-      if (i === !1) { return }
-      for (t = t.firstChild; t;) { r = t.nextSibling, C(t, e, i), t = r }
+      if (i === !1) {
+        return
+      }
+      for (t = t.firstChild; t;) {
+        r = t.nextSibling, C(t, e, i), t = r
+      }
     }
   }
 
   function N (t, e) {
     for (var n, r = t ? t.length : 0, i = 0; i < r; ++i) {
       n = t[i], e(n, i) ===
-      !1 && i--
+        !1 && i--
     }
     return t
   }
@@ -155,7 +165,9 @@
   function M (t) {
     for (var e, n = arguments, r = 1; r < n.length; ++r) {
       if (e = n[r]) {
-        for (var i in e) { l(t, i) && (t[i] = e[i]) }
+        for (var i in e) {
+          l(t, i) && (t[i] = e[i])
+        }
       }
     }
     return t
@@ -166,9 +178,12 @@
       i = this._item
 
     if (!i) {
-      for (; r && !i;) { i = r._item, r = r._parent }
+      for (; r && !i;) {
+        i = r._item, r = r._parent
+      }
     }
-    if (l(n, "currentTarget") && (n.currentTarget = t), l(n, "target") && (
+    if (l(n, "currentTarget") && (n.currentTarget = t), l(n, "target") &&
+      (
         n.target = n.srcElement), l(n, "which") && (n.which = n.charCode ||
         n.keyCode), n.item = i, e.call(this, n), !n.preventUpdate) {
       var o = at(this)
@@ -189,7 +204,9 @@
   function S (t, e) {
     var n, r = Kt(t.value, e)
 
-    if (t.tag && t.tagName === r) { return void t.tag.update() }
+    if (t.tag && t.tagName === r) {
+      return void t.tag.update()
+    }
     if (t.tag) {
       var i = t.value,
         o = t.tag._parent.tags
@@ -214,38 +231,52 @@
   function R (t) {
     var e, n = t.dom,
       i = t.attr,
-      a = (/^(show|hide)$/).test(i),
+      a = (/^(show|hide)$/)
+      .test(i),
       s = a ? Kt(t.expr, M({}, this, this.parent)) : Kt(t.expr, this),
       u = i === "riot-value",
       l = t.root && t.root.tagName === "VIRTUAL",
       c = n && (t.parent || n.parentNode)
 
-    if (t.bool ? s = Boolean(s) && i : (o(s) || s === null) && (s = ""), t._riot_id) {
-      if (t.isMounted) { t.update() } else if (t.mount(), l) {
+    if (t.bool ? s = Boolean(s) && i : (o(s) || s === null) && (s = ""),
+      t._riot_id) {
+      if (t.isMounted) {
+        t.update()
+      } else if (t.mount(), l) {
         var p = document.createDocumentFragment()
 
         dt.call(t, p), t.root.parentElement.replaceChild(p, t.root)
       }
     } else {
-      if (e = t.value, t.value = s, t.update) { return void t.update() }
-      if (t.isRtag && s) { return S(t, this) }
+      if (e = t.value, t.value = s, t.update) {
+        return void t.update()
+      }
+      if (t.isRtag && s) {
+        return S(t, this)
+      }
       if (e !== s && (!u || n.value !== s)) {
         if (!i) {
-          return s = String(s), void (c && (t.parent = c, c.tagName === "TEXTAREA" ?
-          (c.value = s, Ht || (n.nodeValue = s)) : n.nodeValue = s))
+          return s = String(s), void (c && (t.parent = c, c.tagName ===
+            "TEXTAREA" ?
+            (c.value = s, Ht || (n.nodeValue = s)) : n.nodeValue = s))
         }
         if (t.isAttrRemoved && s || (y(n, i), t.isAttrRemoved = !0), r(s)) {
           A(
-          i, s, n, this)
+            i, s, n, this)
         } else if (a) {
           i === "hide" && (s = !s), n.style.display = s ? "" :
-          "none"
-        } else if (u) { n.value = s } else if (E(i, _t) && i !== Ct) {
+            "none"
+        } else if (u) {
+          n.value = s
+        } else if (E(i, _t) && i !== Ct) {
           i = i.slice(_t.length), Pt[i] && (i =
-          Pt[i]), s != null && x(n, i, s)
+            Pt[i]), s != null && x(n, i, s)
         } else {
-          if (i === "selected" && c && (/^(SELECT|OPTGROUP)$/).test(c.tagName) &&
-            s && (c.value = n.value), t.bool && (n[i] = s, !s)) { return }
+          if (i === "selected" && c && (/^(SELECT|OPTGROUP)$/)
+            .test(c.tagName) &&
+            s && (c.value = n.value), t.bool && (n[i] = s, !s)) {
+            return
+          }
           (s === 0 || s && typeof s !== Ot) && x(n, i, s)
         }
       }
@@ -265,7 +296,7 @@
   function P (t, e, n, r) {
     for (var i, o = e.length, a = t.length; o > a;) {
       i = e[--o], e.splice(o,
-      1), i.unmount(), pt(r.tags, n, i, !0)
+        1), i.unmount(), pt(r.tags, n, i, !0)
     }
   }
 
@@ -321,7 +352,8 @@
         .map(function (t) {
           return I(n, l[t], t)
         }) : []), f && (l = l.filter(function (t, r) {
-          return n.key ? Boolean(Kt(f, I(n, t, r, e))) : Boolean(Kt(f, e)) || Boolean(Kt(
+          return n.key ? Boolean(Kt(f, I(n, t, r, e))) : Boolean(Kt(
+          f, e)) || Boolean(Kt(
           f, t))
         })), N(l, function (u, c) {
           var f = i && typeof u === Ot && !r,
@@ -341,10 +373,13 @@
             }, t.innerHTML), b.mount(), C ? D.apply(b, [d || m, _]) :
             B.apply(b, [m, g[c], _]), C || v.splice(c, 0, u), g.splice(
               c, 0, b), p && ct(e.tags, o, b, !0), y = c
-          } else { b.update(u) }
+          } else {
+            b.update(u)
+          }
           y !== c && f && (O(l, v[c]) && H.apply(b, [m, g[c], _]), n.pos &&
             (b[n.pos] = c), g.splice(c, 0, g.splice(y, 1)[0]), v.splice(
-              c, 0, v.splice(y, 1)[0]), !p && b.tags && $.call(b, c)),
+              c, 0, v.splice(y, 1)[0]), !p && b.tags && $.call(b, c)
+          ),
           b._item = u, L(b, "_parent", e)
         }), P(l, g, o, e), v = l.slice(), m.insertBefore(d, c)
       }, n.unmount = function () {
@@ -371,15 +406,20 @@
           "parent": l
         }
       }
-      if (u === 3 && e.parentNode.tagName !== "STYLE" && Kt.hasExpr(e.nodeValue) &&
+      if (u === 3 && e.parentNode.tagName !== "STYLE" && Kt.hasExpr(e
+          .nodeValue) &&
         l.children.push({
           "dom": e,
           "expr": e.nodeValue
-        }), u !== 1) { return i }
-      if (o = b(e, "each")) { return l.children.push(F(e, r, o)), !1 }
+        }), u !== 1) {
+        return i
+      }
+      if (o = b(e, "each")) {
+        return l.children.push(F(e, r, o)), !1
+      }
       if (o = b(e, "if")) {
         return l.children.push(Object.create(Wt)
-        .init(e, r, o)), !1
+          .init(e, r, o)), !1
       }
       if ((a = b(e, Ct)) && Kt.hasExpr(a)) {
         return l.children.push({
@@ -431,7 +471,7 @@
 
     if (t.innerHTML = `<${i}${e.trim()}</${i}`, i = t.firstChild, r) {
       i
-      .selectedIndex = -1
+        .selectedIndex = -1
     } else {
       var o = ne[n]
 
@@ -441,7 +481,9 @@
   }
 
   function G (t, e) {
-    if (!Yt.test(t)) { return t }
+    if (!Yt.test(t)) {
+      return t
+    }
     var n = {}
 
     return e = e && e.replace(te, function (t, e, r) {
@@ -472,12 +514,14 @@
       a = n.attrs,
       s = n.onCreate
 
-    return xt[r] || (Z(r, i, o, a, s), xt[r]["class"] = this.constructor), ht(
-      t, r, e, this), o && zt.inject(), this
+    return xt[r] || (Z(r, i, o, a, s), xt[r]["class"] = this.constructor),
+      ht(
+        t, r, e, this), o && zt.inject(), this
   }
 
   function Z (t, e, n, i, o) {
-    return r(i) && (o = i, (/^[\w\-]+\s?=/).test(n) ? (i = n, n = "") : i =
+    return r(i) && (o = i, (/^[\w\-]+\s?=/)
+      .test(n) ? (i = n, n = "") : i =
       ""), n && (r(n) ? o = n : zt.add(n)), t = t.toLowerCase(), xt[t] = {
         "name": t,
         "tmpl": e,
@@ -507,7 +551,9 @@
         var a = ht(t, i || t.tagName.toLowerCase(), n)
 
         a && o.push(a)
-      } else { t.length && N(t, r) }
+      } else {
+        t.length && N(t, r)
+      }
     }
     var o = []
 
@@ -516,7 +562,9 @@
 
     if (a(t) ? (t = t === "*" ? u = mt() : t + mt(t.split(/, */)), s = t ?
         p(t) : []) : s = t, e === "*") {
-      if (e = u || mt(), s.tagName) { s = p(e, s) } else {
+      if (e = u || mt(), s.tagName) {
+        s = p(e, s)
+      } else {
         var l = []
 
         N(s, function (t) {
@@ -529,11 +577,15 @@
   }
 
   function X (t, e, n) {
-    if (i(t)) { return void X(`__unnamed_${se++}`, t, !0) }
+    if (i(t)) {
+      return void X(`__unnamed_${se++}`, t, !0)
+    }
     var a = n ? ae : oe
 
     if (!e) {
-      if (o(a[t])) { throw new Error(`Unregistered mixin: ${t}`) }
+      if (o(a[t])) {
+        throw new Error(`Unregistered mixin: ${t}`)
+      }
       return a[t]
     }
     a[t] = r(e) ? M(e.prototype, a[t] || {}) && e : M(a[t] || {}, e)
@@ -554,7 +606,8 @@
       var o = !n && t ? this : e || this
 
       N(i, function (t) {
-        t.expr && k.call(o, [t.expr]), r[T(t.name)] = t.expr ? t.expr.value :
+        t.expr && k.call(o, [t.expr]), r[T(t.name)] = t.expr ? t.expr
+          .value :
           t.value
       })
     }
@@ -587,8 +640,10 @@
         "opts": o
       }, c), L(this, "parent", s || !1), L(this, "tags", {}), L(this,
         "refs", {}), i = K(t.tmpl, n, u), L(this, "update", function (t) {
-          return r(this.shouldUpdate) && !this.shouldUpdate(t) ? this : (t =
-          lt(t), u && l && rt.apply(this, [this.parent, v]), M(this, t),
+          return r(this.shouldUpdate) && !this.shouldUpdate(t) ? this : (
+          t =
+          lt(t), u && l && rt.apply(this, [this.parent, v]), M(this,
+            t),
           tt.apply(this, [u, s, l, o, p]), this.isMounted && this.trigger(
             "update", t), k.call(this, h), this.isMounted && this.trigger(
             "updated"), this)
@@ -601,7 +656,9 @@
             e = a(e) ? X(e) : e, n = r(e) ? new e() : e
             var s = Object.getPrototypeOf(n)
 
-            do { o = o.concat(Object.getOwnPropertyNames(i || n)) } while (
+            do {
+              o = o.concat(Object.getOwnPropertyNames(i || n))
+            } while (
             i = Object.getPrototypeOf(i || n))
             N(o, function (e) {
               if (e !== "init") {
@@ -609,7 +666,8 @@
                 Object.getOwnPropertyDescriptor(s, e),
                   o = i && (i.get || i.set)
 
-                !t.hasOwnProperty(e) && o ? Object.defineProperty(t,
+                !t.hasOwnProperty(e) && o ? Object.defineProperty(
+                t,
                 e, i) : t[e] = r(n[e]) ? n[e].bind(t) : n[e]
               }
             }), n.init && n.init.bind(t)()
@@ -618,8 +676,9 @@
           var e = this
 
           d._tag = this, U.apply(s, [d, d.attributes, function (t, n) {
-            !l && Xt.isPrototypeOf(n) && (n.tag = e), t.expr = n, p.push(
-              t)
+            !l && Xt.isPrototypeOf(n) && (n.tag = e), t.expr = n, p
+              .push(
+                t)
           }]), f = [], _(t.attrs, function (t, e) {
             f.push({
               "name": t,
@@ -631,10 +690,19 @@
           .apply(this, [u, s, l, o, p])
           var n = X(wt)
 
-          if (n) { for (var r in n) { n.hasOwnProperty(r) && e.mixin(n[r]) } }
-          if (t.fn && t.fn.call(this, o), this.trigger("before-mount"), V.apply(
-            this, [i, h, !1]), this.update(c), u && l) { this.root = d = i.firstChild } else {
-            for (; i.firstChild;) { d.appendChild(i.firstChild) }
+          if (n) {
+            for (var r in n) {
+              n.hasOwnProperty(r) && e.mixin(n[r])
+            }
+          }
+          if (t.fn && t.fn.call(this, o), this.trigger("before-mount"), V
+          .apply(
+            this, [i, h, !1]), this.update(c), u && l) {
+            this.root = d = i.firstChild
+          } else {
+            for (; i.firstChild;) {
+              d.appendChild(i.firstChild)
+            }
             d.stub && (d = s.root)
           }
           return L(this, "root", d), this.isMounted = !0, !this.parent ||
@@ -654,11 +722,13 @@
           }), ~a && bt.splice(a, 1), o) {
             if (s) {
               n = at(s), m ? Object.keys(this.tags)
-            .forEach(function (t) {
-              pt(n.tags, t, r.tags[t])
-            }) : pt(n.tags, g, this)
+              .forEach(function (t) {
+                pt(n.tags, t, r.tags[t])
+              }) : pt(n.tags, g, this)
             } else {
-              for (; i.firstChild;) { i.removeChild(i.firstChild) }
+              for (; i.firstChild;) {
+                i.removeChild(i.firstChild)
+              }
             }
             e ? y(o, Ct) : o.removeChild(i)
           }
@@ -689,7 +759,8 @@
   function it (t, e) {
     var n, r = this.parent
 
-    r && (n = r.tags[t], u(n) ? n.splice(e, 0, n.splice(n.indexOf(this), 1)[
+    r && (n = r.tags[t], u(n) ? n.splice(e, 0, n.splice(n.indexOf(this),
+      1)[
       0]) : ct(r.tags, t, this))
   }
 
@@ -703,7 +774,9 @@
   }
 
   function at (t) {
-    for (var e = t; e._internal.isAnonymous && e.parent;) { e = e.parent }
+    for (var e = t; e._internal.isAnonymous && e.parent;) {
+      e = e.parent
+    }
     return e
   }
 
@@ -721,10 +794,14 @@
   }
 
   function lt (t) {
-    if (!(t instanceof et || t && typeof t.trigger === Et)) { return t }
+    if (!(t instanceof et || t && typeof t.trigger === Et)) {
+      return t
+    }
     var e = {}
 
-    for (var n in t) { Rt.test(n) || (e[n] = t[n]) }
+    for (var n in t) {
+      Rt.test(n) || (e[n] = t[n])
+    }
     return e
   }
 
@@ -732,8 +809,9 @@
     var i = t[e],
       o = u(i)
 
-    i && i === n || (!i && r ? t[e] = [n] : i ? (!o || o && !O(i, n)) && (o ?
-      i.push(n) : t[e] = [i, n]) : t[e] = n)
+    i && i === n || (!i && r ? t[e] = [n] : i ? (!o || o && !O(i, n)) &&
+      (o ?
+        i.push(n) : t[e] = [i, n]) : t[e] = n)
   }
 
   function pt (t, e, n, r) {
@@ -745,7 +823,9 @@
 
   function ft (t) {
     for (; t;) {
-      if (t.inStub) { return !0 }
+      if (t.inStub) {
+        return !0
+      }
       t = t.parentNode
     }
     return !1
@@ -763,7 +843,8 @@
       "opts": n
     }
 
-    return n && n.parent && (u.parent = n.parent), i && t && et.apply(a, [i,
+    return n && n.parent && (u.parent = n.parent), i && t && et.apply(a, [
+      i,
       u, s]), a && a.mount && (a.mount(!0), O(bt, a) || bt.push(a)), a
   }
 
@@ -775,7 +856,10 @@
 
     for (this._internal.head = this.root.insertBefore(o, this.root.firstChild),
       this._internal.tail = this.root.appendChild(a), r = this._internal.head; r;
-    ) { n = r.nextSibling, s.appendChild(r), i._internal.virts.push(r), r = n }
+    ) {
+      n = r.nextSibling, s.appendChild(r), i._internal.virts.push(r), r =
+        n
+    }
     e ? t.insertBefore(s, e._internal.head) : t.appendChild(s)
   }
 
@@ -795,7 +879,8 @@
       return e + mt(e)
     }
     return t.filter(function (t) {
-      return !(/[^-\w]/).test(t)
+      return !(/[^-\w]/)
+          .test(t)
     })
       .reduce(function (t, e) {
         var n = e.trim()
@@ -868,7 +953,8 @@
     x(t, "type", "text/css")
     var e = f("style[type=riot]")
 
-    return e ? (e.id && (t.id = e.id), e.parentNode.replaceChild(t, e)) :
+    return e ? (e.id && (t.id = e.id), e.parentNode.replaceChild(t,
+        e)) :
       document.getElementsByTagName("head")[0].appendChild(t), t
   }()), yt = vt.styleSheet)
   var zt = {
@@ -901,16 +987,20 @@
       }
 
       function r (t) {
-        if (t === m) { return v }
+        if (t === m) {
+          return v
+        }
         var e = t.split(" ")
 
         if (e.length !== 2 || h.test(t)) {
           throw new Error(
-          `Unsupported brackets "${t}"`)
+            `Unsupported brackets "${t}"`)
         }
         return e = e.concat(t.replace(d, "\\")
-            .split(" ")), e[4] = n(e[1].length > 1 ? /{[\S\s]*?}/ : v[4], e),
-          e[5] = n(t.length > 3 ? /\\({|})/g : v[5], e), e[6] = n(v[6], e),
+            .split(" ")), e[4] = n(e[1].length > 1 ? /{[\S\s]*?}/ : v[4],
+            e),
+          e[5] = n(t.length > 3 ? /\\({|})/g : v[5], e), e[6] = n(v[6],
+            e),
           e[7] = RegExp(`\\\\(${e[3]})|([[({])|(${e[3]})|${f}`, l),
           e[8] = t, e
       }
@@ -920,25 +1010,29 @@
       }
 
       function o (t) {
-        (t || (t = m)) !== b[8] && (b = r(t), s = t === m ? e : n, b[9] = s(
-          v[9])), y = t
+        (t || (t = m)) !== b[8] && (b = r(t), s = t === m ? e : n, b[9] =
+          s(
+            v[9])), y = t
       }
 
       function a (t) {
         var e
 
-        t = t || {}, e = t.brackets, Object.defineProperty(t, "brackets", {
-          "set": o,
-          get () {
-            return y
-          },
-          "enumerable": !0
-        }), u = t, o(e)
+        t = t || {}, e = t.brackets, Object.defineProperty(t,
+          "brackets", {
+            "set": o,
+            get () {
+              return y
+            },
+            "enumerable": !0
+          }), u = t, o(e)
       }
       var s, u, l = "g",
         c = /\/\*[^*]*\*+(?:[^*\/][^*]*\*+)*\//g,
-        p = /"[^"\\]*(?:\\[\S\s][^"\\]*)*"|'[^'\\]*(?:\\[\S\s][^'\\]*)*'/g,
-        f = `${p.source}|${
+        p =
+        /"[^"\\]*(?:\\[\S\s][^"\\]*)*"|'[^'\\]*(?:\\[\S\s][^'\\]*)*'/g,
+        f =
+        `${p.source}|${
         (/(?:\breturn\s+|(?:[$\w\)\]]|\+\+|--)\s*(\/)(?![*\/]))/).source
         }|${
         (/\/(?=[^*\/])[^[\/\\]*(?:(?:\[(?:\\.|[^\]\\]*)*\]|\\.)[^[\/\\]*)*?(\/)[gim]*/)
@@ -951,7 +1045,8 @@
           "{": RegExp(`([{}])|${f}`, l)
         },
         m = "{ }",
-        v = ["{", "}", "{", "}", /{[^}]*}/, /\\([{}])/g, /\\({)|{/g, RegExp(
+        v = ["{", "}", "{", "}", /{[^}]*}/, /\\([{}])/g, /\\({)|{/g,
+          RegExp(
             `\\\\(})|([[({])|(})|${f}`, l), m,
           /^\s*{\^?\s*([$\w]+)(?:\s*,\s*(\S+))?\s+in\s+(\S.*)\s*}/,
           /(^|[^\\]){=[\S\s]*?}/],
@@ -967,7 +1062,7 @@
           var r, i = g[e]
 
           for (i.lastIndex = n, n = 1;
-              (r = i.exec(t)) && (!r[1] || (r[1] === e ? ++n : --n));) { }
+              (r = i.exec(t)) && (!r[1] || (r[1] === e ? ++n : --n));) {}
           return n ? t.length : i.lastIndex
         }
         n || (n = b)
@@ -980,9 +1075,12 @@
               c.lastIndex = i(t, o[2], c.lastIndex)
               continue
             }
-            if (!o[3]) { continue }
+            if (!o[3]) {
+              continue
+            }
           }
-          o[1] || (r(t.slice(s, u)), s = c.lastIndex, c = n[6 + (a ^= 1)],
+          o[1] || (r(t.slice(s, u)), s = c.lastIndex, c = n[6 + (a ^=
+                1)],
               c.lastIndex = s)
         }
         return t && s < t.length && r(t.slice(s)), l
@@ -1005,7 +1103,8 @@
         get () {
           return u
         }
-      }), i.settings = typeof riot != "undefined" && riot.settings || {},
+      }), i.settings = typeof riot != "undefined" && riot.settings ||
+        {},
         i.set = o, i.R_STRINGS = p, i.R_MLCOMMS = c, i.S_QBLOCKS = f, i
     }()),
     Kt = (function () {
@@ -1018,17 +1117,20 @@
         e.riotData = {
           "tagName": n && n.root && n.root.tagName,
           "_riot_id": n && n._riot_id
-        }, t.errorHandler ? t.errorHandler(e) : typeof console != "undefined" &&
+        }, t.errorHandler ? t.errorHandler(e) : typeof console !=
+          "undefined" &&
           typeof console.error == "function" && (e.riotData.tagName &&
-            console.error("Riot template error thrown in the <%s> tag", e.riotData
+            console.error("Riot template error thrown in the <%s> tag",
+              e.riotData
               .tagName.toLowerCase()), console.error(e))
       }
 
       function n (t) {
         var e = r(t)
 
-        return e.slice(0, 11) !== "try{return " && (e = `return ${e}`), new Function(
-          "E", `${e};`)
+        return e.slice(0, 11) !== "try{return " && (e = `return ${e}`),
+          new Function(
+            "E", `${e};`)
       }
 
       function r (t) {
@@ -1040,12 +1142,16 @@
 
           for (o = a = 0; o < r.length; ++o) {
             e = r[o], e && (e = 1 & o ? i(
-              e, 1, n) : `"${e.replace(/\\/g, "\\\\")
+                e, 1, n) :
+              `"${e.replace(/\\/g, "\\\\")
             .replace(/\r\n?|\n/g, "\\n")
-            .replace(/"/g, '\\"')}"`) && (s[a++] = e)
+            .replace(/"/g, '\\"')}"`
+            ) && (s[a++] = e)
           }
           e = a < 2 ? s[0] : `[${s.join(",")}].join("")`
-        } else { e = i(r[1], 0, n) }
+        } else {
+          e = i(r[1], 0, n)
+        }
         return n[0] && (e = e.replace(p, function (t, e) {
           return n[e].replace(/\r/g, "\\r")
             .replace(/\n/g, "\\n")
@@ -1057,7 +1163,13 @@
           var r, i = 1,
             o = f[e]
 
-          for (o.lastIndex = n.lastIndex; r = o.exec(t);) { if (r[0] === e) { ++i } else if (!--i) { break } }
+          for (o.lastIndex = n.lastIndex; r = o.exec(t);) {
+            if (r[0] === e) {
+              ++i
+            } else if (!--i) {
+              break
+            }
+          }
           n.lastIndex = i ? t.length : o.lastIndex
         }
         if (t = t.replace(l, function (t, e) {
@@ -1071,9 +1183,12 @@
 
             for (t = RegExp.rightContext, p = i[2] ? n[i[2]].slice(1, -1)
               .trim()
-              .replace(/\s+/g, " ") : i[1]; h = (i = d.exec(t))[1];) { r(h, d) }
-            h = t.slice(0, i.index), t = RegExp.rightContext, a[c++] = o(h,
-              1, p)
+              .replace(/\s+/g, " ") : i[1]; h = (i = d.exec(t))[1];) {
+              r(h, d)
+            }
+            h = t.slice(0, i.index), t = RegExp.rightContext, a[c++] =
+              o(h,
+                1, p)
           }
           t = c ? c > 1 ? `[${a.join(",")}].join(" ").trim()` : a[0] :
             o(t, e)
@@ -1086,14 +1201,19 @@
 
         return t = t.replace(d, function (t, e, n, i, o) {
           return n && (i = r ? 0 : i + t.length, n !== "this" &&
-              n !== "global" && n !== "window" ? (t = `${e}("${n}${h
-                }${n}`, i && (r = (o = o[i]) === "." || o === "(" || o ===
+              n !== "global" && n !== "window" ? (t =
+                `${e}("${n}${h
+                }${n}`, i && (r = (o =
+                    o[i]) === "." || o === "(" || o ===
                   "[")) : i && (r = !g.test(o.slice(i)))), t
         }), r && (t = `try{return ${t}}catch(e){E(e,this)}`), n ? t =
           `${r ? `function(){${t}}.call(this)` : `(${t})`}?"${
-          n}":""` : e && (t = `function(v){${r ? t.replace("return ",
+          n}":""` :
+          e && (t =
+            `function(v){${r ? t.replace("return ",
               "v=") : `v=(${t})`
-            };return v||v===0?v:""}.call(this)`), t
+            };return v||v===0?v:""}.call(this)`
+          ), t
       }
       var a = {}
 
@@ -1111,7 +1231,8 @@
           "[": /[[\]]/g,
           "{": /[{}]/g
         },
-        h = `"in this?this:${typeof window != "object" ? "global" :
+        h =
+        `"in this?this:${typeof window != "object" ? "global" :
           "window"}).`,
         d =
         /[,{][\$\w]+(?=:)|(^ *|[^$\w\.{])(?!(?:typeof|true|false|null|undefined|in|instanceof|is(?:Finite|NaN)|void|NaN|new|Date|RegExp|Math)(?![$\w]))([$_A-Za-z][$\w]*)/g,
@@ -1148,10 +1269,14 @@
               if (r) {
                 for (var i, o = e[n], a = 0; i = o && o[a]; ++a) {
                   i ==
-                  r && o.splice(a--, 1)
+                    r && o.splice(a--, 1)
                 }
-              } else { delete e[n] }
-            } else { e = {} }
+              } else {
+                delete e[n]
+              }
+            } else {
+              e = {}
+            }
             return t
           },
           "enumerable": !1,
@@ -1175,10 +1300,12 @@
               u = arguments.length - 1,
               l = new Array(u)
 
-            for (a = 0; a < u; a++) { l[a] = s[a + 1] }
+            for (a = 0; a < u; a++) {
+              l[a] = s[a + 1]
+            }
             for (i = n.call(e[r] || [], 0), a = 0; o = i[a]; ++a) {
               o.apply(
-              t, l)
+                t, l)
             }
             return e["*"] && r != "*" && t.trigger(...["*", r].concat(
               l)), t
@@ -1228,7 +1355,8 @@
           var e = this.parent && at(this.parent),
             n = this.tag || this.dom
 
-          !s(this.value) && e && pt(e.refs, this.value, n), s(t) ? y(this
+          !s(this.value) && e && pt(e.refs, this.value, n), s(t) ? y(
+            this
             .dom, this.attr) : (e && ct(e.refs, t, n), x(this.dom, this
             .attr, t)), this.value = t, this.firstRun = !1
         }
@@ -1288,7 +1416,8 @@
       "tags": le
     }
 
-  t.settings = ce, t.util = pe, t.observable = Zt, t.Tag = q, t.tag = Z, t.tag2 =
+  t.settings = ce, t.util = pe, t.observable = Zt, t.Tag = q, t.tag = Z,
+    t.tag2 =
     Q, t.mount = W, t.mixin = X, t.update = Y, t.unregister = J, Object.defineProperty(
       t, "__esModule", {
         "value": !0
