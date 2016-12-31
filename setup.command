@@ -2552,7 +2552,7 @@ cat <<-EOF | patch
        "svg": "*.svg"
      },
 +    "filter": {
-+      "a": ["*", "!**/*.min.*"],
++      "a": ["**", "!**/*.min.*"],
 +      "b": {
 +        "restore": true
 +      }
