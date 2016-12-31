@@ -326,7 +326,7 @@ gulp.task("default", function serve (done) {
       var es6, filter
 
       if (["add", "change"].includes(evt)) {
-        filter = plug.filter(opts.filter.a, opts.filter.b)
+        filter = plug.filter(["*", "!**/*.min.js"], { "restore": true })
         console.log(filter)
         es6 = tidy.code(file, SRC)
           .pipe(filter)
