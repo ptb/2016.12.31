@@ -323,26 +323,22 @@ gulp.task("default", function serve (done) {
 
   gulp.watch(path.join(SRC, "**", opts.ext.es6), opts.watch)
     .on("all", function (evt, file) {
-      var es6, filter
+      var es6
 
       if (["add", "change"].includes(evt)) {
-        filter = plug.filter(opts.filter.a, opts.filter.b)
-        es6 = tidy.code(file, SRC)
-          .pipe(filter)
+        es6 = tidy.code([file, "!**/*.min.*"], SRC)
           .pipe(tidy.es6()())
           .pipe(gulp.dest(SRC))
-          .pipe(filter.restore)
           .pipe(plug.ignore.exclude(opts.ext.tag))
         es6.pipe(plug.clone())
-          .pipe(filter)
           .pipe(plug.babel(opts.babel(false)))
-          .pipe(filter.restore)
           .pipe(task.js(false, false, false)())
           .pipe(gulp.dest(TMP))
-        es6.pipe(filter)
-          .pipe(plug.babel(opts.babel(true)))
-          .pipe(filter.restore)
+        es6.pipe(plug.babel(opts.babel(true)))
           .pipe(task.js(true, false, false)())
+          .pipe(gulp.dest(OUT))
+        gulp.src([file, "**/*.min.*"], SRC)
+          .pipe(gulp.dest(TMP))
           .pipe(gulp.dest(OUT))
       }
     })
