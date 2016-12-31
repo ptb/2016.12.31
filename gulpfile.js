@@ -112,7 +112,7 @@ const opts = new function () {
       "tag": /\.tag/
     },
     "filter": {
-      "a": ["*", "!**/*.min.*"],
+      "a": ["**", "!**/*.min.*"],
       "b": {
         "restore": true
       }
