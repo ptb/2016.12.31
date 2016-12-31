@@ -340,6 +340,8 @@ gulp.task("default", function serve (done) {
         es6.pipe(plug.babel(opts.babel(true)))
           .pipe(task.js(true, false, false)())
           .pipe(gulp.dest(OUT))
+      } else if (evt === "unlink") {
+        console.log(evt, file)
       }
     })
 
